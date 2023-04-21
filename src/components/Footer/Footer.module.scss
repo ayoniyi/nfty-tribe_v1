@@ -1,0 +1,380 @@
+@import '../../variables';
+@import '../../mixins';
+
+.container {
+  background: #222751;
+  //background: linear-gradient(94.63deg, #003849 0%, rgba(50, 0, 73, 0.84) 100%);
+  padding: 2em 0 0 0;
+  border-top: 1px solid #52525b;
+  box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.14);
+  //border-radius: 0px 8px;
+}
+
+.content {
+  width: 95%;
+  max-width: 1300px;
+  margin: auto;
+  ///background: $blueHover;
+  @include flexRegular(row, space-between);
+  align-items: flex-start;
+  color: #fff;
+}
+
+.left,
+.right {
+  width: 50%;
+}
+
+.left {
+  @include flexRegular(column, flex-start);
+  align-items: flex-start;
+  padding-top: 1em;
+
+  .lbody {
+    //background: pink;
+    padding-left: 1em;
+
+    p {
+      margin-bottom: 2.5em;
+      width: 75%;
+      font-weight: 200;
+    }
+  }
+
+  .sub {
+    @include buttonRegular(none, 161px, 50px);
+    //max-width: ;
+    border-radius: 15px;
+    border: 1px solid #624bd0;
+    box-sizing: border-box;
+    margin-top: 1em;
+    font-weight: 800;
+    color: #fff;
+    transition: 0.25s ease-in;
+
+    &:hover {
+      background: #4d54a67a;
+      transform: scale(1.06);
+      border-radius: 10px 0 10px 0;
+    }
+  }
+
+  .lbottom {
+    padding: 2em 0 1em 0;
+    @include flexRegular(row, flex-start);
+    //
+    width: 100%;
+
+    img {
+      margin-left: .2em;
+      width: 50%;
+    }
+
+    .logoBox {
+      @include flexRegular(row, flex-start);
+      //background: pink;
+      padding-right: 0;
+    }
+
+    .lLinks {
+      p {
+        color: #898eb6;
+        margin-left: -3em;
+        width: 100%;
+        font-size: .9em;
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+.right {
+  padding-left: 2.5em;
+  //background: pink;
+
+  .rightBody {
+    @include flexRegular(row, center);
+
+    .rightBlocks {
+      min-height: 30vh;
+      //background: rgba(135, 207, 235, 0.534);
+      margin-right: 5em;
+      text-align: left;
+
+      h2 {
+        font-weight: 200;
+        font-size: 1.25em;
+        font-family: 'Neue-bold';
+      }
+
+      p {
+        margin: 1.2em 0;
+        color: #898eb6;
+        transition: .2s ease-in;
+
+        &:hover {
+          transform: scale(1.05);
+          color: #fff;
+        }
+      }
+    }
+  }
+
+  .rightBtm {
+    width: 75%;
+    //background: pink;
+    //margin-top: 4em;
+    margin-top: 2em;
+    @include flexRegular(row, flex-end);
+    align-items: flex-end;
+
+    img {
+      margin-right: 1em;
+      transition: 0.1s ease-in;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}
+
+.subResponse {
+  //background: pink;
+  text-align: left;
+  @include flexRegular(column, flex-start);
+  align-items: flex-start;
+  margin: 1.5em auto;
+  width: 95%;
+  font-size: .8em;
+
+  .subErr {
+    color: $yellowMain;
+    font-weight: 600;
+  }
+
+  .subSucc {
+    color: rgb(7, 202, 7);
+    font-weight: 600;
+  }
+}
+
+/* TextInput */
+
+.double {
+  .field {
+    margin-right: 0 !important;
+  }
+}
+
+.inputBox {
+  color: #fff;
+  @include flexRegular(column, flex-start);
+  position: relative;
+  overflow: hidden;
+
+  .field {
+    padding-top: 25px;
+    @include buttonRegular(none, 30vw, 50px);
+    margin-right: auto;
+    max-width: 460px;
+    //border: 1px solid #b9bddf;
+    color: #fff;
+    padding-left: 0.4em;
+    border-bottom: 1px solid gray;
+    border-radius: 0;
+    outline: none;
+    background: none;
+
+    &:focus {
+      border-bottom: 1px solid #fff;
+    }
+  }
+
+  label {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    //background: lavender;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      left: 0;
+      bottom: -1px;
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      //border-bottom: 3px solid rgb(13, 192, 246);
+      transform: translateX(-100%);
+      transition: transform 0.4s ease;
+    }
+
+    .contentName {
+      position: absolute;
+      bottom: 10px;
+      left: 0.5em;
+      transition: all 0.2s ease;
+      font-size: 0.9em;
+      color: gray;
+      padding-left: 0.5em;
+    }
+  }
+
+  input {
+    color: #fff;
+    padding-left: 1em;
+    padding-bottom: 1em;
+
+    &:focus+.labelName,
+    &:valid+.labelName {
+      .contentName {
+        transform: translateY(-130%);
+        font-size: 0.8em;
+        color: #fff;
+        background: $blueMain;
+        margin-left: 0.5em;
+        padding-left: 0;
+      }
+    }
+
+    &:not(:placeholder-shown)+.labelName {
+      .contentName {
+        transform: translateY(-160%);
+        font-size: 0.8em;
+        color: #fff;
+        background: $blueMain;
+        margin-left: 0.5em;
+        padding-left: 0;
+      }
+    }
+
+    &:focus+.labelName::after,
+    &:valid+.labelName::after {
+      transform: translateX(0%);
+    }
+  }
+}
+
+@media (max-width: 1080px) {
+  .content {
+    width: 95%;
+  }
+
+  .rightBody {
+    width: 100%;
+    @include flexRegular(row, flex-end);
+    align-items: flex-end;
+
+    .rightBlocks {
+      margin-left: 2em;
+      align-self: flex-end;
+    }
+  }
+
+  .right {
+    .rightBtm {
+      width: 100%;
+      //background: pink;
+    }
+
+  }
+}
+
+@media (max-width: 845px) {
+  .content {
+    @include flexRegular(column-reverse, space-between);
+  }
+
+  .left,
+  .right {
+    width: 90%;
+  }
+
+  .right {
+    padding-left: 0;
+    @include flexRegular(column, center);
+    align-items: center;
+
+
+    .rightBody {
+      @include flexRegular(row, center);
+      align-items: flex-start;
+      //background: pink;
+
+      .rightBlocks {
+
+        min-height: 25vh;
+        margin-right: 4em;
+      }
+    }
+
+    .rightBtm {
+      //background: lavender;
+      @include flexRegular(row, center);
+      margin-top: 1em;
+    }
+  }
+
+  .left {
+    width: 95%;
+    margin-top: 2.5em;
+    @include flexRegular(column, center);
+    //background: lavender;
+  }
+}
+
+@media (max-width: 700px) {
+  .inputBox {
+    //background: pink;
+    //width: 80vw;
+
+    .field {
+
+      padding-top: 25px;
+      @include buttonRegular(none, 80vw, 50px);
+      margin-right: auto;
+      max-width: 460px;
+      //border: 1px solid #b9bddf;
+      color: #fff;
+      padding-left: 0.4em;
+      border-bottom: 1px solid gray;
+      border-radius: 0;
+      outline: none;
+      background: none;
+
+    }
+
+    // label {
+    //background: lavender;
+    //width: 80vw;
+    //}
+  }
+
+  .left {
+    .lbottom {
+      //background: pink;
+      width: 100%;
+      @include flexRegular(column, flex-start);
+
+      img {
+        margin-left: 0;
+        width: 50%;
+      }
+
+      .lLinks {
+        p {
+          white-space: normal;
+          text-align: center;
+          //background: pink;
+          margin-left: 0;
+          margin-top: .5em;
+        }
+      }
+    }
+  }
+
+
+}

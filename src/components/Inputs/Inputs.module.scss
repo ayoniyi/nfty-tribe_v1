@@ -1,0 +1,77 @@
+@import '../../variables';
+@import '../../mixins';
+
+.inputBx {
+
+  input,
+  select {
+    width: 100%;
+    max-width: 650px;
+    height: 48px;
+    border: 2px solid #a1a1aa;
+    border-radius: 4px;
+    outline: none;
+    padding: 0.2em 10em 0.2em 1em;
+    transition: 0.2s ease-in;
+    //font-weight: lighter;
+    font-weight: 300;
+  }
+
+  select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+  }
+
+  .datePick {
+    padding: 0.2em 2em 0.2em 1em;
+  }
+
+  // input[type='datetime-local'] {
+  //   -webkit-appearance: none;
+  //   -moz-appearance: none;
+  // }
+  // input[type="date"]::-webkit-inner-spin-button,
+  // input[type="date"]::-webkit-calendar-picker-indicator {
+  //   display: none;
+  //   -webkit-appearance: none;
+  // }
+
+  .selectDark {
+    background-image: url('./assets/select2.svg');
+    background-repeat: no-repeat;
+    background-position: right 18px top 20px;
+  }
+
+  .selectLight {
+    background-image: url('./assets/select.svg');
+    background-repeat: no-repeat;
+    background-position: right 18px top 20px;
+  }
+}
+
+.darkDate {
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(100%);
+  }
+}
+
+.lightDate {
+  input[type="datetime-local"]::-webkit-calendar-picker-indicator {
+    filter: invert(0%);
+  }
+}
+
+.textBox {
+  textarea {
+    @include flexRegular(column, center);
+    outline: none;
+    width: 100%;
+    max-width: 650px;
+    height: 105px;
+    border: 2px solid #a1a1aa;
+    padding-left: 1em;
+    padding-top: 30px;
+    transition: 0.2s ease-in;
+    font-family: Raleway;
+  }
+}
